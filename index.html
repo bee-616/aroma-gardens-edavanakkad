@@ -298,6 +298,338 @@
         padding: 16px 20px 24px;
       }
     }
+
+    /* ── Plants Carousel Section ── */
+    .plants-section {
+      width: 100%;
+      padding: 64px 0 72px;
+      border-top: 1px solid rgba(251, 247, 235, 0.08);
+    }
+
+    .plants-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 40px;
+      margin-bottom: 32px;
+    }
+
+    .plants-section-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+
+    .plants-section-header a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: opacity 0.18s ease;
+    }
+
+    .plants-section-header a:hover {
+      opacity: 0.75;
+    }
+
+    /* Carousel wrapper — clips overflow */
+    .carousel-outer {
+      position: relative;
+      padding: 0 72px;
+    }
+
+    .carousel-arrow-left,
+    .carousel-arrow-right {
+      position: absolute;
+      top: calc(50% - 28px); /* vertically centre on image */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--green-border);
+      background: rgba(28, 38, 50, 0.85);
+      color: var(--cream);
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .carousel-arrow-left { left: 16px; }
+    .carousel-arrow-right { right: 16px; }
+
+    .carousel-arrow-left:hover,
+    .carousel-arrow-right:hover {
+      background: var(--green-dim);
+      border-color: var(--green);
+    }
+
+    .carousel-arrow-left:disabled,
+    .carousel-arrow-right:disabled {
+      opacity: 0.2;
+      cursor: default;
+      background: rgba(28, 38, 50, 0.85);
+      border-color: var(--green-border);
+    }
+
+    .carousel-arrow-left svg,
+    .carousel-arrow-right svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .carousel-track-wrap {
+      overflow: hidden;
+      padding: 18px;
+      margin: -18px;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 28px;
+      transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    /* Each card — fixed width so 3 show at once */
+    .carousel-card {
+      flex: 0 0 calc((100% - 84px) / 4);
+      min-width: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Bloom effect */
+    .carousel-card .bloom {
+      position: absolute;
+      inset: -10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.045);
+      transform: scale(0.92);
+      opacity: 0;
+      transition:
+        opacity 0.2s ease,
+        transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .carousel-card:hover .bloom {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .carousel-card .card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* Image */
+    .carousel-img-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .carousel-img-wrap img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+      background-color: rgba(251, 247, 235, 0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-card:hover .carousel-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .carousel-card-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .carousel-card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(251, 247, 235, 0.55);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    /* Buttons */
+    .carousel-card-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-btn-learn,
+    .carousel-btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      border-radius: 100px;
+      padding: 11px 16px;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .carousel-btn-learn {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid var(--green-border);
+    }
+
+    .carousel-btn-learn:hover {
+      background: var(--green-dim);
+      border-color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .carousel-btn-wa {
+      background: var(--green);
+      color: var(--cream);
+      border: 1.5px solid var(--green);
+    }
+
+    .carousel-btn-wa:hover {
+      background: #1ddd58;
+      border-color: #1ddd58;
+      transform: translateY(-1px);
+    }
+
+    .carousel-btn-wa svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Arrow buttons */
+    .carousel-arrows {
+      display: none; /* hidden — arrows are now absolute on sides */
+    }
+
+    .carousel-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--green-border);
+      background: transparent;
+      color: var(--cream);
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .carousel-arrow:hover {
+      background: var(--green-dim);
+      border-color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .carousel-arrow:disabled {
+      opacity: 0.25;
+      cursor: default;
+      transform: none;
+      background: transparent;
+      border-color: var(--green-border);
+    }
+
+    .carousel-arrow svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1133px) and (min-width: 861px) {
+      .carousel-card {
+        flex: 0 0 calc((100% - 84px) / 4);
+      }
+
+      .carousel-btn-wa span.btn-wa-text {
+        display: none;
+      }
+
+      .carousel-btn-wa {
+        flex: 0 0 38px;
+        width: 38px;
+        padding: 11px;
+      }
+
+      .carousel-btn-wa svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .plants-section-header {
+        padding: 0 24px;
+      }
+
+      .carousel-outer {
+        padding: 0 60px;
+      }
+
+      .carousel-card {
+        flex: 0 0 calc((100% - 28px) / 2);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .plants-section {
+        padding: 48px 0 56px;
+      }
+
+      .plants-section-header {
+        padding: 0 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .carousel-outer {
+        padding: 0 52px;
+      }
+
+      .carousel-card {
+        flex: 0 0 85%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -436,6 +768,122 @@
     </div>
   </main>
 
+
+  <!-- ── Plants Carousel ── -->
+  <section class="plants-section" aria-label="Our Plants">
+
+    <div class="plants-section-header">
+      <h2>Our Plants</h2>
+      <a href="/plants/">View all plants →</a>
+    </div>
+
+    <div class="carousel-outer">
+      <button class="carousel-arrow-left" id="carouselPrev" aria-label="Previous plant" disabled>
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-arrow-right" id="carouselNext" aria-label="Next plant">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+      <!-- Olosapo -->
+      <div class="carousel-card">
+        <div class="bloom"></div>
+        <div class="card-inner">
+          <div class="carousel-img-wrap">
+            <img src="images/olosapo.jpg" alt="Olosapo plant at Aroma Gardens Edavanakkad" />
+          </div>
+          <p class="carousel-card-name">Olosapo</p>
+          <p class="carousel-card-desc">Sweet, aromatic, custard-like tropical fruit from Mexico on a compact drought-resistant tree.</p>
+          <div class="carousel-card-btns">
+            <a href="/plants/olosapo.html" class="carousel-btn-learn">Learn More →</a>
+            <a href="https://wa.me/919446505731?text=Hi, I'm interested in the Olosapo plant" class="carousel-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Olosapo on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.30361 19.7929L7.17241 20.3006C8.63747 21.1552 10.3039 21.6038 12 21.6002C13.8987 21.6002 15.7548 21.0371 17.3335 19.9823C18.9122 18.9274 20.1426 17.4281 20.8692 15.6739C21.5958 13.9197 21.786 11.9894 21.4155 10.1272C21.0451 8.26498 20.1308 6.55441 18.7882 5.21181C17.4456 3.86922 15.7351 2.9549 13.8729 2.58448C12.0107 2.21406 10.0804 2.40417 8.32625 3.13078C6.57208 3.85739 5.07277 5.08785 4.01791 6.66657C2.96305 8.2453 2.40002 10.1014 2.40002 12.0001C2.39651 13.6967 2.84554 15.3636 3.70082 16.8289L4.20722 17.6977L3.42362 20.579L6.30361 19.7929ZM0.00481854 24.0002L1.62722 18.0385C0.557968 16.206 -0.00369795 14.1217 1.83224e-05 12.0001C1.83224e-05 5.37244 5.37242 0 12 0C18.6276 0 24 5.37244 24 12.0001C24 18.6277 18.6276 24.0002 12 24.0002C9.87932 24.0038 7.79591 23.4426 5.96401 22.3742L0.00481854 24.0002ZM7.66921 6.36965C7.83081 6.35845 7.99201 6.35685 8.15281 6.36485C8.21761 6.36965 8.28241 6.37605 8.34721 6.38405C8.53801 6.40565 8.74801 6.52205 8.81881 6.68285C9.17641 7.49485 9.52361 8.31086 9.86041 9.13087C9.93481 9.31327 9.89041 9.54727 9.74881 9.77527C9.67681 9.89167 9.56401 10.0549 9.43321 10.2217C9.29761 10.3957 9.00601 10.7149 9.00601 10.7149C9.00601 10.7149 8.88721 10.8565 8.93281 11.0329C8.94961 11.1001 9.00481 11.1973 9.05521 11.2789L9.12601 11.3929C9.43321 11.9053 9.84601 12.4249 10.35 12.9145C10.494 13.0537 10.6344 13.1965 10.7856 13.3297C11.3472 13.8253 11.9832 14.2297 12.6696 14.5297L12.6756 14.5321C12.7776 14.5765 12.8292 14.6005 12.978 14.6641C13.0524 14.6953 13.1288 14.7217 13.2072 14.7433C13.236 14.7513 13.2652 14.7557 13.2948 14.7565C13.3632 14.7591 13.4313 14.745 13.493 14.7153C13.5547 14.6856 13.6082 14.6412 13.6488 14.5861C14.5164 13.5349 14.5968 13.4665 14.6028 13.4665V13.4689C14.6631 13.4125 14.7348 13.3697 14.813 13.3434C14.8913 13.3171 14.9743 13.3079 15.0564 13.3165C15.13 13.3197 15.2008 13.3357 15.2688 13.3645C15.906 13.6561 16.9488 14.1109 16.9488 14.1109L17.6472 14.4241C17.7648 14.4805 17.8716 14.6137 17.8752 14.7421C17.88 14.8225 17.8872 14.9521 17.8596 15.1897C17.8212 15.5005 17.7276 15.8737 17.634 16.0693C17.5691 16.2024 17.4841 16.3246 17.382 16.4317C17.2608 16.5588 17.1283 16.6744 16.986 16.7773C16.8868 16.8509 16.8368 16.8869 16.836 16.8853C16.6868 16.9801 16.5334 17.0681 16.3764 17.1493C16.0673 17.3131 15.7261 17.4073 15.3768 17.4253C15.1548 17.4373 14.9328 17.4541 14.7096 17.4421C14.7 17.4421 14.028 17.3377 14.028 17.3377C12.3219 16.8889 10.7441 16.0482 9.42001 14.8825C9.14881 14.6437 8.89681 14.3869 8.64001 14.1313C7.57441 13.0693 6.76681 11.9233 6.27601 10.8409C6.02702 10.3095 5.89212 9.73193 5.88001 9.14527C5.8755 8.41656 6.11408 7.70715 6.55801 7.12925C6.64561 7.01645 6.72841 6.89885 6.87121 6.76325C7.02241 6.61925 7.11961 6.54245 7.22401 6.48965C7.36326 6.42124 7.51445 6.38049 7.66921 6.36965Z" fill="#FBF7EB"/></svg>
+              <span class="btn-wa-text">Enquire</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Rollinia -->
+      <div class="carousel-card">
+        <div class="bloom"></div>
+        <div class="card-inner">
+          <div class="carousel-img-wrap">
+            <img src="images/rollinia.jpg" alt="Rollinia plant at Aroma Gardens Edavanakkad" />
+          </div>
+          <p class="carousel-card-name">Rollinia</p>
+          <p class="carousel-card-desc">Pineapple, banana, coconut in one fruit. South America's most aromatic tropical, fruiting in 2-3 years.</p>
+          <div class="carousel-card-btns">
+            <a href="/plants/rollinia.html" class="carousel-btn-learn">Learn More →</a>
+            <a href="https://wa.me/919446505731?text=Hi, I'm interested in the Rollinia plant" class="carousel-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Rollinia on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.30361 19.7929L7.17241 20.3006C8.63747 21.1552 10.3039 21.6038 12 21.6002C13.8987 21.6002 15.7548 21.0371 17.3335 19.9823C18.9122 18.9274 20.1426 17.4281 20.8692 15.6739C21.5958 13.9197 21.786 11.9894 21.4155 10.1272C21.0451 8.26498 20.1308 6.55441 18.7882 5.21181C17.4456 3.86922 15.7351 2.9549 13.8729 2.58448C12.0107 2.21406 10.0804 2.40417 8.32625 3.13078C6.57208 3.85739 5.07277 5.08785 4.01791 6.66657C2.96305 8.2453 2.40002 10.1014 2.40002 12.0001C2.39651 13.6967 2.84554 15.3636 3.70082 16.8289L4.20722 17.6977L3.42362 20.579L6.30361 19.7929ZM0.00481854 24.0002L1.62722 18.0385C0.557968 16.206 -0.00369795 14.1217 1.83224e-05 12.0001C1.83224e-05 5.37244 5.37242 0 12 0C18.6276 0 24 5.37244 24 12.0001C24 18.6277 18.6276 24.0002 12 24.0002C9.87932 24.0038 7.79591 23.4426 5.96401 22.3742L0.00481854 24.0002ZM7.66921 6.36965C7.83081 6.35845 7.99201 6.35685 8.15281 6.36485C8.21761 6.36965 8.28241 6.37605 8.34721 6.38405C8.53801 6.40565 8.74801 6.52205 8.81881 6.68285C9.17641 7.49485 9.52361 8.31086 9.86041 9.13087C9.93481 9.31327 9.89041 9.54727 9.74881 9.77527C9.67681 9.89167 9.56401 10.0549 9.43321 10.2217C9.29761 10.3957 9.00601 10.7149 9.00601 10.7149C9.00601 10.7149 8.88721 10.8565 8.93281 11.0329C8.94961 11.1001 9.00481 11.1973 9.05521 11.2789L9.12601 11.3929C9.43321 11.9053 9.84601 12.4249 10.35 12.9145C10.494 13.0537 10.6344 13.1965 10.7856 13.3297C11.3472 13.8253 11.9832 14.2297 12.6696 14.5297L12.6756 14.5321C12.7776 14.5765 12.8292 14.6005 12.978 14.6641C13.0524 14.6953 13.1288 14.7217 13.2072 14.7433C13.236 14.7513 13.2652 14.7557 13.2948 14.7565C13.3632 14.7591 13.4313 14.745 13.493 14.7153C13.5547 14.6856 13.6082 14.6412 13.6488 14.5861C14.5164 13.5349 14.5968 13.4665 14.6028 13.4665V13.4689C14.6631 13.4125 14.7348 13.3697 14.813 13.3434C14.8913 13.3171 14.9743 13.3079 15.0564 13.3165C15.13 13.3197 15.2008 13.3357 15.2688 13.3645C15.906 13.6561 16.9488 14.1109 16.9488 14.1109L17.6472 14.4241C17.7648 14.4805 17.8716 14.6137 17.8752 14.7421C17.88 14.8225 17.8872 14.9521 17.8596 15.1897C17.8212 15.5005 17.7276 15.8737 17.634 16.0693C17.5691 16.2024 17.4841 16.3246 17.382 16.4317C17.2608 16.5588 17.1283 16.6744 16.986 16.7773C16.8868 16.8509 16.8368 16.8869 16.836 16.8853C16.6868 16.9801 16.5334 17.0681 16.3764 17.1493C16.0673 17.3131 15.7261 17.4073 15.3768 17.4253C15.1548 17.4373 14.9328 17.4541 14.7096 17.4421C14.7 17.4421 14.028 17.3377 14.028 17.3377C12.3219 16.8889 10.7441 16.0482 9.42001 14.8825C9.14881 14.6437 8.89681 14.3869 8.64001 14.1313C7.57441 13.0693 6.76681 11.9233 6.27601 10.8409C6.02702 10.3095 5.89212 9.73193 5.88001 9.14527C5.8755 8.41656 6.11408 7.70715 6.55801 7.12925C6.64561 7.01645 6.72841 6.89885 6.87121 6.76325C7.02241 6.61925 7.11961 6.54245 7.22401 6.48965C7.36326 6.42124 7.51445 6.38049 7.66921 6.36965Z" fill="#FBF7EB"/></svg>
+              <span class="btn-wa-text">Enquire</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Matoa -->
+      <div class="carousel-card">
+        <div class="bloom"></div>
+        <div class="card-inner">
+          <div class="carousel-img-wrap">
+            <img src="images/matoa.jpg" alt="Matoa plant at Aroma Gardens Edavanakkad" />
+          </div>
+          <p class="carousel-card-name">Matoa</p>
+          <p class="carousel-card-desc">Rambutan, lychee and longan in one. A rare Pacific gem with sweet, juicy, aromatic flesh.</p>
+          <div class="carousel-card-btns">
+            <a href="/plants/matoa.html" class="carousel-btn-learn">Learn More →</a>
+            <a href="https://wa.me/919446505731?text=Hi, I'm interested in the Matoa plant" class="carousel-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Matoa on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.30361 19.7929L7.17241 20.3006C8.63747 21.1552 10.3039 21.6038 12 21.6002C13.8987 21.6002 15.7548 21.0371 17.3335 19.9823C18.9122 18.9274 20.1426 17.4281 20.8692 15.6739C21.5958 13.9197 21.786 11.9894 21.4155 10.1272C21.0451 8.26498 20.1308 6.55441 18.7882 5.21181C17.4456 3.86922 15.7351 2.9549 13.8729 2.58448C12.0107 2.21406 10.0804 2.40417 8.32625 3.13078C6.57208 3.85739 5.07277 5.08785 4.01791 6.66657C2.96305 8.2453 2.40002 10.1014 2.40002 12.0001C2.39651 13.6967 2.84554 15.3636 3.70082 16.8289L4.20722 17.6977L3.42362 20.579L6.30361 19.7929ZM0.00481854 24.0002L1.62722 18.0385C0.557968 16.206 -0.00369795 14.1217 1.83224e-05 12.0001C1.83224e-05 5.37244 5.37242 0 12 0C18.6276 0 24 5.37244 24 12.0001C24 18.6277 18.6276 24.0002 12 24.0002C9.87932 24.0038 7.79591 23.4426 5.96401 22.3742L0.00481854 24.0002ZM7.66921 6.36965C7.83081 6.35845 7.99201 6.35685 8.15281 6.36485C8.21761 6.36965 8.28241 6.37605 8.34721 6.38405C8.53801 6.40565 8.74801 6.52205 8.81881 6.68285C9.17641 7.49485 9.52361 8.31086 9.86041 9.13087C9.93481 9.31327 9.89041 9.54727 9.74881 9.77527C9.67681 9.89167 9.56401 10.0549 9.43321 10.2217C9.29761 10.3957 9.00601 10.7149 9.00601 10.7149C9.00601 10.7149 8.88721 10.8565 8.93281 11.0329C8.94961 11.1001 9.00481 11.1973 9.05521 11.2789L9.12601 11.3929C9.43321 11.9053 9.84601 12.4249 10.35 12.9145C10.494 13.0537 10.6344 13.1965 10.7856 13.3297C11.3472 13.8253 11.9832 14.2297 12.6696 14.5297L12.6756 14.5321C12.7776 14.5765 12.8292 14.6005 12.978 14.6641C13.0524 14.6953 13.1288 14.7217 13.2072 14.7433C13.236 14.7513 13.2652 14.7557 13.2948 14.7565C13.3632 14.7591 13.4313 14.745 13.493 14.7153C13.5547 14.6856 13.6082 14.6412 13.6488 14.5861C14.5164 13.5349 14.5968 13.4665 14.6028 13.4665V13.4689C14.6631 13.4125 14.7348 13.3697 14.813 13.3434C14.8913 13.3171 14.9743 13.3079 15.0564 13.3165C15.13 13.3197 15.2008 13.3357 15.2688 13.3645C15.906 13.6561 16.9488 14.1109 16.9488 14.1109L17.6472 14.4241C17.7648 14.4805 17.8716 14.6137 17.8752 14.7421C17.88 14.8225 17.8872 14.9521 17.8596 15.1897C17.8212 15.5005 17.7276 15.8737 17.634 16.0693C17.5691 16.2024 17.4841 16.3246 17.382 16.4317C17.2608 16.5588 17.1283 16.6744 16.986 16.7773C16.8868 16.8509 16.8368 16.8869 16.836 16.8853C16.6868 16.9801 16.5334 17.0681 16.3764 17.1493C16.0673 17.3131 15.7261 17.4073 15.3768 17.4253C15.1548 17.4373 14.9328 17.4541 14.7096 17.4421C14.7 17.4421 14.028 17.3377 14.028 17.3377C12.3219 16.8889 10.7441 16.0482 9.42001 14.8825C9.14881 14.6437 8.89681 14.3869 8.64001 14.1313C7.57441 13.0693 6.76681 11.9233 6.27601 10.8409C6.02702 10.3095 5.89212 9.73193 5.88001 9.14527C5.8755 8.41656 6.11408 7.70715 6.55801 7.12925C6.64561 7.01645 6.72841 6.89885 6.87121 6.76325C7.02241 6.61925 7.11961 6.54245 7.22401 6.48965C7.36326 6.42124 7.51445 6.38049 7.66921 6.36965Z" fill="#FBF7EB"/></svg>
+              <span class="btn-wa-text">Enquire</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Longan Tropical -->
+      <div class="carousel-card">
+        <div class="bloom"></div>
+        <div class="card-inner">
+          <div class="carousel-img-wrap">
+            <img src="images/longan-tropical.jpg" alt="Longan Tropical plant at Aroma Gardens Edavanakkad" />
+          </div>
+          <p class="carousel-card-name">Longan Tropical</p>
+          <p class="carousel-card-desc">The Dragon's Eye. Sweet, musky, caramel-like. Asia's beloved fruit, thriving in Kerala's climate.</p>
+          <div class="carousel-card-btns">
+            <a href="/plants/longan-tropical.html" class="carousel-btn-learn">Learn More →</a>
+            <a href="https://wa.me/919446505731?text=Hi, I'm interested in the Longan Tropical plant" class="carousel-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Longan Tropical on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.30361 19.7929L7.17241 20.3006C8.63747 21.1552 10.3039 21.6038 12 21.6002C13.8987 21.6002 15.7548 21.0371 17.3335 19.9823C18.9122 18.9274 20.1426 17.4281 20.8692 15.6739C21.5958 13.9197 21.786 11.9894 21.4155 10.1272C21.0451 8.26498 20.1308 6.55441 18.7882 5.21181C17.4456 3.86922 15.7351 2.9549 13.8729 2.58448C12.0107 2.21406 10.0804 2.40417 8.32625 3.13078C6.57208 3.85739 5.07277 5.08785 4.01791 6.66657C2.96305 8.2453 2.40002 10.1014 2.40002 12.0001C2.39651 13.6967 2.84554 15.3636 3.70082 16.8289L4.20722 17.6977L3.42362 20.579L6.30361 19.7929ZM0.00481854 24.0002L1.62722 18.0385C0.557968 16.206 -0.00369795 14.1217 1.83224e-05 12.0001C1.83224e-05 5.37244 5.37242 0 12 0C18.6276 0 24 5.37244 24 12.0001C24 18.6277 18.6276 24.0002 12 24.0002C9.87932 24.0038 7.79591 23.4426 5.96401 22.3742L0.00481854 24.0002ZM7.66921 6.36965C7.83081 6.35845 7.99201 6.35685 8.15281 6.36485C8.21761 6.36965 8.28241 6.37605 8.34721 6.38405C8.53801 6.40565 8.74801 6.52205 8.81881 6.68285C9.17641 7.49485 9.52361 8.31086 9.86041 9.13087C9.93481 9.31327 9.89041 9.54727 9.74881 9.77527C9.67681 9.89167 9.56401 10.0549 9.43321 10.2217C9.29761 10.3957 9.00601 10.7149 9.00601 10.7149C9.00601 10.7149 8.88721 10.8565 8.93281 11.0329C8.94961 11.1001 9.00481 11.1973 9.05521 11.2789L9.12601 11.3929C9.43321 11.9053 9.84601 12.4249 10.35 12.9145C10.494 13.0537 10.6344 13.1965 10.7856 13.3297C11.3472 13.8253 11.9832 14.2297 12.6696 14.5297L12.6756 14.5321C12.7776 14.5765 12.8292 14.6005 12.978 14.6641C13.0524 14.6953 13.1288 14.7217 13.2072 14.7433C13.236 14.7513 13.2652 14.7557 13.2948 14.7565C13.3632 14.7591 13.4313 14.745 13.493 14.7153C13.5547 14.6856 13.6082 14.6412 13.6488 14.5861C14.5164 13.5349 14.5968 13.4665 14.6028 13.4665V13.4689C14.6631 13.4125 14.7348 13.3697 14.813 13.3434C14.8913 13.3171 14.9743 13.3079 15.0564 13.3165C15.13 13.3197 15.2008 13.3357 15.2688 13.3645C15.906 13.6561 16.9488 14.1109 16.9488 14.1109L17.6472 14.4241C17.7648 14.4805 17.8716 14.6137 17.8752 14.7421C17.88 14.8225 17.8872 14.9521 17.8596 15.1897C17.8212 15.5005 17.7276 15.8737 17.634 16.0693C17.5691 16.2024 17.4841 16.3246 17.382 16.4317C17.2608 16.5588 17.1283 16.6744 16.986 16.7773C16.8868 16.8509 16.8368 16.8869 16.836 16.8853C16.6868 16.9801 16.5334 17.0681 16.3764 17.1493C16.0673 17.3131 15.7261 17.4073 15.3768 17.4253C15.1548 17.4373 14.9328 17.4541 14.7096 17.4421C14.7 17.4421 14.028 17.3377 14.028 17.3377C12.3219 16.8889 10.7441 16.0482 9.42001 14.8825C9.14881 14.6437 8.89681 14.3869 8.64001 14.1313C7.57441 13.0693 6.76681 11.9233 6.27601 10.8409C6.02702 10.3095 5.89212 9.73193 5.88001 9.14527C5.8755 8.41656 6.11408 7.70715 6.55801 7.12925C6.64561 7.01645 6.72841 6.89885 6.87121 6.76325C7.02241 6.61925 7.11961 6.54245 7.22401 6.48965C7.36326 6.42124 7.51445 6.38049 7.66921 6.36965Z" fill="#FBF7EB"/></svg>
+              <span class="btn-wa-text">Enquire</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Longan All Season -->
+      <div class="carousel-card">
+        <div class="bloom"></div>
+        <div class="card-inner">
+          <div class="carousel-img-wrap">
+            <img src="images/longan-all-season.jpg" alt="Longan All Season plant at Aroma Gardens Edavanakkad" />
+          </div>
+          <p class="carousel-card-name">Longan All Season</p>
+          <p class="carousel-card-desc">The everbearing Dragon's Eye. Same sweet caramel flavour, fruiting multiple times a year.</p>
+          <div class="carousel-card-btns">
+            <a href="/plants/longan-all-season.html" class="carousel-btn-learn">Learn More →</a>
+            <a href="https://wa.me/919446505731?text=Hi, I'm interested in the Longan All Season plant" class="carousel-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Longan All Season on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.30361 19.7929L7.17241 20.3006C8.63747 21.1552 10.3039 21.6038 12 21.6002C13.8987 21.6002 15.7548 21.0371 17.3335 19.9823C18.9122 18.9274 20.1426 17.4281 20.8692 15.6739C21.5958 13.9197 21.786 11.9894 21.4155 10.1272C21.0451 8.26498 20.1308 6.55441 18.7882 5.21181C17.4456 3.86922 15.7351 2.9549 13.8729 2.58448C12.0107 2.21406 10.0804 2.40417 8.32625 3.13078C6.57208 3.85739 5.07277 5.08785 4.01791 6.66657C2.96305 8.2453 2.40002 10.1014 2.40002 12.0001C2.39651 13.6967 2.84554 15.3636 3.70082 16.8289L4.20722 17.6977L3.42362 20.579L6.30361 19.7929ZM0.00481854 24.0002L1.62722 18.0385C0.557968 16.206 -0.00369795 14.1217 1.83224e-05 12.0001C1.83224e-05 5.37244 5.37242 0 12 0C18.6276 0 24 5.37244 24 12.0001C24 18.6277 18.6276 24.0002 12 24.0002C9.87932 24.0038 7.79591 23.4426 5.96401 22.3742L0.00481854 24.0002ZM7.66921 6.36965C7.83081 6.35845 7.99201 6.35685 8.15281 6.36485C8.21761 6.36965 8.28241 6.37605 8.34721 6.38405C8.53801 6.40565 8.74801 6.52205 8.81881 6.68285C9.17641 7.49485 9.52361 8.31086 9.86041 9.13087C9.93481 9.31327 9.89041 9.54727 9.74881 9.77527C9.67681 9.89167 9.56401 10.0549 9.43321 10.2217C9.29761 10.3957 9.00601 10.7149 9.00601 10.7149C9.00601 10.7149 8.88721 10.8565 8.93281 11.0329C8.94961 11.1001 9.00481 11.1973 9.05521 11.2789L9.12601 11.3929C9.43321 11.9053 9.84601 12.4249 10.35 12.9145C10.494 13.0537 10.6344 13.1965 10.7856 13.3297C11.3472 13.8253 11.9832 14.2297 12.6696 14.5297L12.6756 14.5321C12.7776 14.5765 12.8292 14.6005 12.978 14.6641C13.0524 14.6953 13.1288 14.7217 13.2072 14.7433C13.236 14.7513 13.2652 14.7557 13.2948 14.7565C13.3632 14.7591 13.4313 14.745 13.493 14.7153C13.5547 14.6856 13.6082 14.6412 13.6488 14.5861C14.5164 13.5349 14.5968 13.4665 14.6028 13.4665V13.4689C14.6631 13.4125 14.7348 13.3697 14.813 13.3434C14.8913 13.3171 14.9743 13.3079 15.0564 13.3165C15.13 13.3197 15.2008 13.3357 15.2688 13.3645C15.906 13.6561 16.9488 14.1109 16.9488 14.1109L17.6472 14.4241C17.7648 14.4805 17.8716 14.6137 17.8752 14.7421C17.88 14.8225 17.8872 14.9521 17.8596 15.1897C17.8212 15.5005 17.7276 15.8737 17.634 16.0693C17.5691 16.2024 17.4841 16.3246 17.382 16.4317C17.2608 16.5588 17.1283 16.6744 16.986 16.7773C16.8868 16.8509 16.8368 16.8869 16.836 16.8853C16.6868 16.9801 16.5334 17.0681 16.3764 17.1493C16.0673 17.3131 15.7261 17.4073 15.3768 17.4253C15.1548 17.4373 14.9328 17.4541 14.7096 17.4421C14.7 17.4421 14.028 17.3377 14.028 17.3377C12.3219 16.8889 10.7441 16.0482 9.42001 14.8825C9.14881 14.6437 8.89681 14.3869 8.64001 14.1313C7.57441 13.0693 6.76681 11.9233 6.27601 10.8409C6.02702 10.3095 5.89212 9.73193 5.88001 9.14527C5.8755 8.41656 6.11408 7.70715 6.55801 7.12925C6.64561 7.01645 6.72841 6.89885 6.87121 6.76325C7.02241 6.61925 7.11961 6.54245 7.22401 6.48965C7.36326 6.42124 7.51445 6.38049 7.66921 6.36965Z" fill="#FBF7EB"/></svg>
+              <span class="btn-wa-text">Enquire</span>
+            </a>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
   <!-- ── Address ── -->
   <address style="text-align:center; font-style:normal; font-size:14px; color:rgba(251,247,235,0.5); margin-bottom:8px; line-height:1.7; padding: 0 24px;">
     Kuzhupilly, Thaniyath Lane, Edavanakkad, Kochi, Kerala 682502<br/>
@@ -447,5 +895,38 @@
     <p>© 2026. Aromagardensedavanakad . All Rights Reserved</p>
   </footer>
 
+
+  <script>
+    (function () {
+      const track   = document.getElementById('carouselTrack');
+      const btnPrev = document.getElementById('carouselPrev');
+      const btnNext = document.getElementById('carouselNext');
+      const cards   = track.querySelectorAll('.carousel-card');
+      let current   = 0;
+
+      function visibleCount() {
+        if (window.innerWidth <= 520) return 1;
+        if (window.innerWidth <= 860) return 2;
+        return 4;
+      }
+
+      function maxIndex() {
+        return cards.length - visibleCount();
+      }
+
+      function update() {
+        const gap      = parseFloat(getComputedStyle(track).gap) || 28;
+        const cardW    = cards[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${current * (cardW + gap)}px)`;
+        btnPrev.disabled = current === 0;
+        btnNext.disabled = current >= maxIndex();
+      }
+
+      btnPrev.addEventListener('click', () => { if (current > 0) { current--; update(); } });
+      btnNext.addEventListener('click', () => { if (current < maxIndex()) { current++; update(); } });
+      window.addEventListener('resize', () => { current = Math.min(current, maxIndex()); update(); });
+      update();
+    })();
+  </script>
 </body>
 </html>
