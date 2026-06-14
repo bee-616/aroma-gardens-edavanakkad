@@ -1,0 +1,94 @@
+{
+  "testimonials": [
+    {
+      "id": "fahid-kooloth",
+      "reviewer": "Fahid Kooloth",
+      "rating": 5,
+      "comment": "Excellent garden for all the flowering plants, indoor plants, lotus tubers and fruits plants. The price is very much low — Highly recommended garden!!",
+      "images": [
+        "/images/testimonials/fahid-1.webp"
+      ]
+    },
+    {
+      "id": "faseela-ck",
+      "reviewer": "Faseela C K",
+      "rating": 5,
+      "comment": "Adenium flowering plants with flowers from 300 is a big + and must try. The fruit plants are excellent — priced at excellent levels. One of the best places in Edavanakkad in terms of flexibility!!",
+      "images": [
+        "/images/testimonials/faseela-1.webp"
+      ]
+    },
+    {
+      "id": "sowndarya-sivadas",
+      "reviewer": "Sowndarya Sivadas",
+      "rating": 5,
+      "comment": "They have a beautiful collection of plants at affordable prices. The owner is very helpful and explains each plant and its features. Highly recommended.",
+      "images": [
+        "/images/testimonials/sowndarya-1.webp"
+      ]
+    },
+    {
+      "id": "divya-biju",
+      "reviewer": "Divya Biju",
+      "rating": 5,
+      "comment": "I purchased some plants from this shop and had a very good experience. The plants were healthy and of good quality. The staff was also helpful and friendly. Highly satisfied.",
+      "images": [
+        "/images/testimonials/divya-1.webp"
+      ]
+    },
+    {
+      "id": "nursery-ambience-1",
+      "reviewer": null,
+      "rating": null,
+      "comment": null,
+      "images": [
+        "/images/testimonials/nursery-1.webp"
+      ]
+    },
+    {
+      "id": "mohamed-shakir",
+      "reviewer": "Mohamed Shakir",
+      "rating": 5,
+      "comment": "So many healthy fruit plants — mango, mangosteen, guava, rambutan, jackfruit and more! The plants looked fresh, well cared for, and full of life. Staff were friendly and gave useful tips too.",
+      "images": [
+        "/images/testimonials/mohamed-1.webp"
+      ]
+    },
+    {
+      "id": "vahida-latheef",
+      "reviewer": "Vahida Latheef",
+      "rating": 5,
+      "comment": "Aroma Gardens stands out for its wide variety of fruit plants and flowering plants, along with its quality and reasonable pricing. The owner's expertise and friendly approach make the experience even better. Highly recommended for plant lovers.",
+      "images": [
+        "/images/testimonials/vahida-1.webp"
+      ]
+    },
+    {
+      "id": "nursery-ambience-2",
+      "reviewer": null,
+      "rating": null,
+      "comment": null,
+      "images": [
+        "/images/testimonials/nursery-2.webp"
+      ]
+    },
+    {
+      "id": "labeeb-suhail",
+      "reviewer": "Labeeb Suhail",
+      "rating": 5,
+      "comment": "Good quality seedlings available at very low prices from Aroma Gardens. Those who like Adenium will understand if they go there. Different types of fruit trees are also available.",
+      "images": [
+        "/images/testimonials/labeeb-1.webp"
+      ]
+    },
+    {
+      "id": "kochunnichathanattu",
+      "reviewer": "Kochunnichathanattu",
+      "rating": 5,
+      "comment": "Very nice tree plants with good pricing. You can call and check the pricing and other details. Bought Abhiu plant and it was good.",
+      "images": [
+        "/images/testimonials/kochunni-1.webp"
+      ]
+    }
+  ]
+}
